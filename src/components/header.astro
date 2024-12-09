@@ -1,0 +1,43 @@
+---
+type  TSection = {
+  title: string;
+  section: string;
+}
+
+
+const sections: TSection[] = [
+  {
+    title: 'Home',
+    section: '/'
+  },
+{
+    title: 'Sobre nosotros',
+    section: '#about-us'
+  },
+  {
+    title: 'Servicios',
+    section: '#services'
+  },
+{
+    title: 'Portafolio',
+    section: '#portafolio'
+  },
+  {
+    title: 'Contáctenos',
+    section: '#contact'
+  }
+]
+---
+
+
+<header>
+  <nav>
+    <ul>
+      {sections.map((section: TSection, index: number) => (
+        <li>
+          <a class="font-slab">{section.title}</a> 
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
