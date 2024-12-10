@@ -15,9 +15,11 @@ import Header from "../components/header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-  <body>
+  <body class="flex  flex-row">
+    <main class="w-full h-screen pr-18">
+      <slot />
+    </main>
     <Header />
-		<slot />
 	</body>
 </html>
 
@@ -26,6 +28,14 @@ import Header from "../components/header.astro";
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
-	}
+    height: 100%;
+    background-color: #000;
+    color: #FFF;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 </style>

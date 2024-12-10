@@ -8,7 +8,7 @@ type  TSection = {
 const sections: TSection[] = [
   {
     title: 'Home',
-    section: '/'
+    section: '#home'
   },
 {
     title: 'Sobre nosotros',
@@ -30,14 +30,20 @@ const sections: TSection[] = [
 ---
 
 
-<header>
+<header class="flex items-center justify-center h-screen w-14 fixed right-0">
   <nav>
-    <ul>
+    <ul class="flex flex-col items-center justify-between  h-2/3">
       {sections.map((section: TSection, index: number) => (
-        <li>
-          <a class="font-slab">{section.title}</a> 
+        <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
+        <a href={section.section} class="font-slab vertical-txt">{section.title}</a> 
         </li>
       ))}
     </ul>
   </nav>
 </header>
+
+<style>
+  .vertical-txt {
+    writing-mode: vertical-rl;
+  }
+</style>
