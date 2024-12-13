@@ -1,4 +1,45 @@
+---
+type TService = {
+  title: string;
+  description: string;
+}
+
+const services: TService[] = [
+  {
+    title: "Desarrollo de Software Personalizado",
+    description: "Diseñamos e implementamos sistemas que responden a las necesidades específicas del sector público y privado."
+  },
+  {
+    title: "Automatización de Procesos",
+    description: "Optimizamos operaciones y mejoramos la productividad mediante herramientas tecnológicas avanzadas."
+  },
+  {
+    title: "Desarrollo Web",
+    description: "Creamos portales accesibles y seguros que facilitan la interacción con los ciudadanos y empresas."
+  },
+  {
+    title: "Integración en la Nube",
+    description: "Modernizamos aplicaciones mediante soluciones en la nube que garantizan escalabilidad y rendimiento."
+  },
+  {
+    title: "Soporte y Mantenimiento",
+    description: "Aseguramos que tus sistemas permanezcan seguros, actualizados y funcionales en todo momento."
+  }
+]
+
+// TODO: los items de la lista deberian ser cards
+---
+
 <div id="services" class="about-us flex flex-col items-center justify-center w-full h-screen p-8">
-  <h2>Servicios</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At accusamus quisquam quaerat molestias officiis! Sint culpa laudantium tempora illum. Similique, architecto laudantium quasi ea nulla cum sed. Sequi, praesentium vel.</p>
+  <div class="flex flex-col items-center justify-between gap-16">
+    <h2 class="font-slab text-5xl">Soluciones tecnológicas a la medida</h2>
+    <ul class="flex flex-col gap-10">
+      {services.map((service: TService) => (
+        <li>
+          <h4 class="font-slab font-semibold text-2xl pb-4">{service.title}</h4>
+          <p class="font-roboto font-light text-lg">{service.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>

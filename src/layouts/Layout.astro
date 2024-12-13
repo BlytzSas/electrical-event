@@ -16,7 +16,7 @@ import Header from "../components/header.astro";
 		<title>Astro Basics</title>
 	</head>
   <body class="flex  flex-row">
-    <main class="w-full h-screen pr-18">
+    <main class="w-full h-screen pr-10">
       <slot />
     </main>
     <Header />
@@ -31,11 +31,5 @@ import Header from "../components/header.astro";
     height: 100%;
     background-color: #000;
     color: #FFF;
-  }
-
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
   }
 </style>

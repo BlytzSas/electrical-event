@@ -10,7 +10,7 @@ const sections: TSection[] = [
     title: 'Home',
     section: '#home'
   },
-{
+  {
     title: 'Sobre nosotros',
     section: '#about-us'
   },
@@ -18,24 +18,24 @@ const sections: TSection[] = [
     title: 'Servicios',
     section: '#services'
   },
-{
+  {
     title: 'Portafolio',
     section: '#portafolio'
   },
   {
-    title: 'Contáctenos',
+    title: 'Contáctanos',
     section: '#contact'
   }
 ]
 ---
 
 
-<header class="flex items-center justify-center h-screen w-14 fixed right-0">
+<header class="flex items-center justify-center h-screen w-14 fixed right-0 border-l">
   <nav>
     <ul class="flex flex-col items-center justify-between  h-2/3">
-      {sections.map((section: TSection, index: number) => (
+      {sections.map((section: TSection) => (
         <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
-        <a href={section.section} class="font-slab vertical-txt">{section.title}</a> 
+          <a href={section.section} class="font-slab vertical-txt">{section.title}</a> 
         </li>
       ))}
     </ul>
