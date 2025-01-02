@@ -1,0 +1,57 @@
+---
+import { getTwoLettersFromStr } from "../../utils"
+
+const { title, description } = Astro.props
+---
+
+<div class="flip-card w-52 h-72">
+    <div class="flip-card-inner">
+        <div class="flip-card-front border border-white rounded-lg shadow-md p-4 flex items-center justify-center">
+            <h4 class="text-white text-5xl">
+                {getTwoLettersFromStr(title)}
+            </h4>
+        </div>
+        <div class="flip-card-back border border-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+            <h4 class="italic font-slab text-white text-center mb-4">{title}</h4>
+            <p class="font-roboto text-white text-center">{description}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .flip-card {
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+        background-color: transparent;
+    }
+
+    .flip-card-back {
+        background-color: transparent;
+        transform: rotateY(180deg);
+    }
+</style>
