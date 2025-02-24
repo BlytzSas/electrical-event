@@ -30,12 +30,19 @@ const sections: TSection[] = [
 ---
 
 
-<header class="flex items-center justify-center bg-black h-screen w-14 fixed right-0 border-l">
-  <nav>
-    <ul class="flex flex-col items-center justify-between  h-2/3">
+<header class="hidden items-center justify-center bg-black fixed w-full md:w-14 h-screen right-0 top-0 md:flex md:border-l z-50">
+  <button 
+    id="closeMenu" 
+    class="absolute top-4 right-4 p-2 bg-white text-black rounded md:hidden z-50"
+    type="button"
+  >
+    Close
+  </button>
+  <nav class="w-full">
+    <ul class="flex flex-col items-center justify-between h-2/3 pt-16 md:pt-0">
       {sections.map((section: TSection) => (
         <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
-          <a href={section.section} class="font-slab vertical-txt">{section.title}</a> 
+          <a href={section.section} class="nav-link font-slab vertical-txt">{section.title}</a> 
         </li>
       ))}
     </ul>
@@ -45,5 +52,32 @@ const sections: TSection[] = [
 <style>
   .vertical-txt {
     writing-mode: vertical-rl;
+    @media only screen and (max-width: 425px) {
+      writing-mode: horizontal-tb;
+    }
+  }
+
+  header {
+    transition: all 0.3s ease-in-out;
   }
 </style>
+
+<script>
+  const closeBtn = document.getElementById('closeMenu');
+  const header = document.querySelector('header');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  const closeMenu = () => {
+    if (window.innerWidth < 768) { // Only close on mobile
+      header?.classList.remove('flex');
+      header?.classList.add('hidden');
+    }
+  };
+
+  closeBtn?.addEventListener('click', closeMenu);
+  
+  // Add click handlers to all navigation links
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

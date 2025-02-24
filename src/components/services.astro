@@ -39,18 +39,18 @@ const services: TService[] = [
 
 <div
   id="services"
-  class="about-us flex flex-col items-center justify-center w-full h-screen p-8"
+  class="about-us flex flex-col items-center justify-center w-full p-8"
 >
-  <div class="flex flex-col items-center justify-between gap-16">
+  <div class="flex flex-col items-center justify-center gap-16">
     <h2 class="font-slab text-5xl">Soluciones tecnológicas a la medida</h2>
-    <ul class="flex flex-row flex-wrap gap-10">
+    <ul class="flex flex-row flex-wrap items-center justify-center gap-10">
       {
         services.map((service: TService) => (
             <li>
                 <ServicesCard
                     title={service.title}
                     description={service.description}
-                    />
+                />
             </li>
         ))
       }
