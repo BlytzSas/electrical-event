@@ -17,9 +17,13 @@ import Header from "../components/header.astro";
 	</head>
 	<body class="flex flex-col md:flex-row relative">
 		<div class="flex md:hidden fixed top-4 right-4 z-40">
-			<button id="openMenu" class="p-2 bg-white text-black rounded">
-				Menu
-			</button>
+			<button id="openMenu" class="p-2 rounded">
+        <div class="hamburguer">
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
+        </div>
+      </button>
 		</div>
 		<main class="w-full h-screen pr-0 md:pr-10">
 			<slot />
@@ -41,7 +45,21 @@ import Header from "../components/header.astro";
 	/* Add this class to show the menu */
 	.show-menu {
 		transform: translateX(0) !important;
-	}
+  }
+
+  .hamburguer {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-flow: column nowrap
+  }
+
+  .line-1, .line-2, .line-3 {
+    width: 35px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+  } 
 </style>
 
 <script>

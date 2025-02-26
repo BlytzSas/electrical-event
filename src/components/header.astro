@@ -1,42 +1,41 @@
 ---
-type  TSection = {
-  title: string;
-  section: string;
-}
-
+type TSection = {
+	title: string;
+	section: string;
+};
 
 const sections: TSection[] = [
-  {
-    title: 'Home',
-    section: '#home'
-  },
-  {
-    title: 'Sobre nosotros',
-    section: '#about-us'
-  },
-  {
-    title: 'Servicios',
-    section: '#services'
-  },
-  {
-    title: 'Portafolio',
-    section: '#portafolio'
-  },
-  {
-    title: 'Contáctanos',
-    section: '#contact'
-  }
-]
+	{
+		title: "Home",
+		section: "#home",
+	},
+	{
+		title: "Sobre nosotros",
+		section: "#about-us",
+	},
+	{
+		title: "Servicios",
+		section: "#services",
+	},
+	{
+		title: "Portafolio",
+		section: "#portafolio",
+	},
+	{
+		title: "Contáctanos",
+		section: "#contact",
+	},
+];
 ---
 
 
 <header class="hidden items-center justify-center bg-black fixed w-full md:w-14 h-screen right-0 top-0 md:flex md:border-l z-50">
   <button 
     id="closeMenu" 
-    class="absolute top-4 right-4 p-2 bg-white text-black rounded md:hidden z-50"
+    class="absolute top-0 right-5 p-2 text-white  rounded md:hidden z-50"
     type="button"
   >
-    Close
+    <span class="button-icon"></span>
   </button>
   <nav class="w-full">
     <ul class="flex flex-col items-center justify-between h-2/3 pt-16 md:pt-0">
@@ -54,6 +53,19 @@ const sections: TSection[] = [
     writing-mode: vertical-rl;
     @media only screen and (max-width: 425px) {
       writing-mode: horizontal-tb;
+    }
+  }
+
+  .button-icon {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    
+     &:after {
+      content: "\d7";
+      font-size: 45px;
+      color: #fff;
+      text-align: center;
     }
   }
 
