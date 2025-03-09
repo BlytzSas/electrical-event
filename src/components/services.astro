@@ -2,39 +2,37 @@
 import ServicesCard from "./servicesCard.astro";
 
 type TService = {
-  title: string;
-  description: string;
+	title: string;
+	description: string;
 };
 
 const services: TService[] = [
-  {
-    title: "Desarrollo de Software Personalizado",
-    description:
-      "Diseñamos e implementamos sistemas que responden a las necesidades específicas del sector público y privado.",
-  },
-  {
-    title: "Automatización de Procesos",
-    description:
-      "Optimizamos operaciones y mejoramos la productividad mediante herramientas tecnológicas avanzadas.",
-  },
-  {
-    title: "Desarrollo Web",
-    description:
-      "Creamos portales accesibles y seguros que facilitan la interacción con los ciudadanos y empresas.",
-  },
-  {
-    title: "Integración en la Nube",
-    description:
-      "Modernizamos aplicaciones mediante soluciones en la nube que garantizan escalabilidad y rendimiento.",
-  },
-  {
-    title: "Soporte y Mantenimiento",
-    description:
-      "Aseguramos que tus sistemas permanezcan seguros, actualizados y funcionales en todo momento.",
-  },
+	{
+		title: "Desarrollo de Software Personalizado",
+		description:
+			"Diseñamos e implementamos sistemas que responden a las necesidades específicas del sector público y privado.",
+	},
+	{
+		title: "Automatización de Procesos",
+		description:
+			"Optimizamos operaciones y mejoramos la productividad mediante herramientas tecnológicas avanzadas.",
+	},
+	{
+		title: "Desarrollo Web",
+		description:
+			"Creamos portales accesibles y seguros que facilitan la interacción con los ciudadanos y empresas.",
+	},
+	{
+		title: "Integración en la Nube",
+		description:
+			"Modernizamos aplicaciones mediante soluciones en la nube que garantizan escalabilidad y rendimiento.",
+	},
+	{
+		title: "Soporte y Mantenimiento",
+		description:
+			"Aseguramos que tus sistemas permanezcan seguros, actualizados y funcionales en todo momento.",
+	},
 ];
-
-// TODO: los items de la lista deberian ser cards
 ---
 
 <div
@@ -42,7 +40,7 @@ const services: TService[] = [
   class="about-us flex flex-col items-center justify-center w-full p-8"
 >
   <div class="flex flex-col items-center justify-center gap-16">
-    <h2 class="font-slab text-5xl">Soluciones tecnológicas a la medida</h2>
+    <h2 class="font-slab text-5xl text-center">Soluciones tecnológicas a la medida</h2>
     <ul class="flex flex-row flex-wrap items-center justify-center gap-10">
       {
         services.map((service: TService) => (

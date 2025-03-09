@@ -50,42 +50,43 @@ const sections: TSection[] = [
 
 <style>
   .vertical-txt {
-    writing-mode: vertical-rl;
-    @media only screen and (max-width: 425px) {
-      writing-mode: horizontal-tb;
-    }
+  	writing-mode: vertical-rl;
+  	@media only screen and (max-width: 425px) {
+  		writing-mode: horizontal-tb;
+  	}
   }
 
   .button-icon {
-     &:after {
-      content: "\d7";
-      font-size: 50px;
-      color: #fff;
-      text-align: center;
-    }
+  	&:after {
+  		content: "\d7";
+  		font-size: 50px;
+  		color: #fff;
+  		text-align: center;
+  	}
   }
 
   header {
-    transition: all 0.3s ease-in-out;
+  	transition: all 0.3s ease-in-out;
   }
 </style>
 
 <script>
-  const closeBtn = document.getElementById('closeMenu');
-  const header = document.querySelector('header');
-  const navLinks = document.querySelectorAll('.nav-link');
-  
+  const closeBtn = document.getElementById("closeMenu");
+  const header = document.querySelector("header");
+  const navLinks = document.querySelectorAll(".nav-link");
+
   const closeMenu = () => {
-    if (window.innerWidth < 768) { // Only close on mobile
-      header?.classList.remove('flex');
-      header?.classList.add('hidden');
-    }
+  	if (window.innerWidth < 768) {
+  		// Only close on mobile
+  		header?.classList.remove("flex");
+  		header?.classList.add("hidden");
+  	}
   };
 
-  closeBtn?.addEventListener('click', closeMenu);
-  
+  closeBtn?.addEventListener("click", closeMenu);
+
   // Add click handlers to all navigation links
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+  navLinks.forEach((link) => {
+  	link.addEventListener("click", closeMenu);
   });
 </script>
