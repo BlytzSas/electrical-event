@@ -17,6 +17,22 @@ import Header from "../components/header.astro";
 		<meta name="description" content="Blytz es tu aliado tecnológico en la nube, brindando soluciones innovadoras para empresas y organizaciones que buscan optimizar sus procesos y mejorar su productividad.">
 	</head>
 	<body class="flex flex-col md:flex-row relative">
+	   <button id="themeToggle" class="p-2 rounded mr-4">
+    		<svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
+    			<circle cx="12" cy="12" r="5"></circle>
+    			<line x1="12" y1="1" x2="12" y2="3"></line>
+    			<line x1="12" y1="21" x2="12" y2="23"></line>
+    			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    			<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    			<line x1="1" y1="12" x2="3" y2="12"></line>
+    			<line x1="21" y1="12" x2="23" y2="12"></line>
+    			<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    			<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    		</svg>
+    		<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
+    			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    		</svg>
+    	</button>
 		<div class="flex md:hidden fixed top-4 right-4 z-40">
 			<button id="openMenu" class="p-2 rounded">
         <div class="hamburguer">
@@ -39,35 +55,91 @@ import Header from "../components/header.astro";
 		margin: 0;
 		width: 100%;
 		height: 100%;
-		background-color: #000;
-		color: #FFF;
+		color-scheme: light dark;
+	}
+
+	html.dark {
+		color-scheme: dark;
+		--bg-color: #000;
+		--text-color: #FFF;
+	}
+
+	html.light {
+		color-scheme: light;
+		--bg-color: #FFF;
+		--text-color: #000;
+	}
+
+	body {
+		background-color: var(--bg-color);
+		color: var(--text-color);
 	}
 
 	/* Add this class to show the menu */
 	.show-menu {
 		transform: translateX(0) !important;
-  }
+    }
 
-  .hamburguer {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    flex-flow: column nowrap
-  }
+    .hamburguer {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-flow: column nowrap
+    }
 
-  .line-1, .line-2, .line-3 {
-    width: 35px;
-    height: 3px;
-    background-color: white;
-    margin: 4px 0;
-  }
+    .line-1, .line-2, .line-3 {
+        width: 35px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+    }
+
+    #themeToggle {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: var(--text-color);
+    }
 </style>
 
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		const openMenuBtn = document.getElementById('openMenu');
 		const header = document.querySelector('header');
+		const themeToggle = document.getElementById('themeToggle');
+		const sunIcon = document.getElementById('sun-icon');
+		const moonIcon = document.getElementById('moon-icon');
 
+		// Function to update icon visibility
+		function updateIcon() {
+			const isDark = document.documentElement.classList.contains('dark');
+			sunIcon?.classList.toggle('hidden', isDark);
+			moonIcon?.classList.toggle('hidden', !isDark);
+		};
+
+		// Initial theme setup from local storage or user preference
+		const theme = (() => {
+			if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+				return localStorage.getItem('theme');
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		})();
+
+		// Set initial theme
+		document.documentElement.classList.add(theme as unknown as string);
+
+		// Initial icon setup
+		updateIcon();
+
+		// Theme toggle functionality
+		themeToggle?.addEventListener('click', () => {
+			const isDark = document.documentElement.classList.toggle('dark');
+			const theme = isDark ? 'dark' : 'light';
+			localStorage.setItem('theme', theme);
+			updateIcon();
+		});
+
+		// Menu toggle
 		openMenuBtn?.addEventListener('click', () => {
 			header?.classList.remove('hidden');
 			header?.classList.add('flex');

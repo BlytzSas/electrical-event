@@ -28,11 +28,10 @@ const sections: TSection[] = [
 ];
 ---
 
-
-<header class="hidden items-center justify-center bg-black fixed w-full md:w-14 h-screen right-0 top-0 md:flex md:border-l z-50">
-  <button 
-    id="closeMenu" 
-    class="absolute top-[-8px] right-5 p-2 text-white  rounded md:hidden z-50"
+<header class="hidden items-center justify-center transition-colors duration-300 fixed w-full md:w-14 h-screen right-0 top-0 md:flex md:border-l z-50">
+  <button
+    id="closeMenu"
+    class="absolute top-[-8px] right-5 p-2 rounded md:hidden z-50"
     type="button"
   >
     <span class="button-icon"></span>
@@ -41,7 +40,7 @@ const sections: TSection[] = [
     <ul class="flex flex-col items-center justify-between h-2/3 pt-16 md:pt-0">
       {sections.map((section: TSection) => (
         <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
-          <a href={section.section} class="nav-link font-slab vertical-txt">{section.title}</a> 
+          <a href={section.section} class="nav-link font-slab vertical-txt">{section.title}</a>
         </li>
       ))}
     </ul>
@@ -49,6 +48,16 @@ const sections: TSection[] = [
 </header>
 
 <style>
+  header {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link {
+    color: var(--text-color);
+  }
+
   .vertical-txt {
   	writing-mode: vertical-rl;
   	@media only screen and (max-width: 425px) {
@@ -60,13 +69,22 @@ const sections: TSection[] = [
   	&:after {
   		content: "\d7";
   		font-size: 50px;
-  		color: #fff;
+  		color: var(--text-color);
   		text-align: center;
   	}
   }
 
-  header {
-  	transition: all 0.3s ease-in-out;
+  /* Apply theme CSS variables */
+  :global(html.dark) header {
+    --bg-color: #000;
+    --text-color: #FFF;
+    --border-color: #333;
+  }
+
+  :global(html.light) header {
+    --bg-color: #FFF;
+    --text-color: #000;
+    --border-color: #e5e5e5;
   }
 </style>
 
@@ -89,4 +107,29 @@ const sections: TSection[] = [
   navLinks.forEach((link) => {
   	link.addEventListener("click", closeMenu);
   });
+
+  // Handle theme changes
+  const updateHeaderTheme = () => {
+    // This function will run whenever the theme changes
+    // The actual styling is handled by CSS variables
+  };
+
+  // Call once on load
+  updateHeaderTheme();
+
+  // Observer for theme changes
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === 'attributes' &&
+        mutation.attributeName === 'class' &&
+        mutation.target === document.documentElement
+      ) {
+        updateHeaderTheme();
+      }
+    });
+  });
+
+  // Start observing document.documentElement for class changes
+  observer.observe(document.documentElement, { attributes: true });
 </script>

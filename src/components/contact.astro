@@ -1,11 +1,63 @@
 <div id="contact" class="about-us flex flex-col items-center justify-center w-full h-screen p-8 gap-8">
   <h2 class="font-slab text-5xl text-center md:text-left">¡Trabajemos Juntos!</h2>
   <h3 class="font-roboto text-lg text-center md:text-left">¿Tienes un proyecto en mente o necesitas modernizar procesos? Estamos listos para ayudarte.</h3>
-  <form class="flex flex-col items-center justify-between border rounded-md border-white gap-8 p-6">
-    <input class="bg-transparent border border-white rounded-md px-4 py-2" name="email" placeholder="Correo"/>
-    <input class="bg-transparent border border-white rounded-md px-4 py-2" name="phone" placeholder="Telefono"/>
-    <textarea class="bg-transparent border border-white rounded-md px-4 py-2" name="description" placeholder="¿Como podemos ayudarte?"/>
-    <input class="bg-white rounded-md text-black px-4 py-2 w-full cursor-pointer" type="submit" />
+  <form class="contact-form flex flex-col items-center justify-between border rounded-md gap-8 p-6">
+    <input class="form-input bg-transparent border rounded-md px-4 py-2" name="email" placeholder="Correo"/>
+    <input class="form-input bg-transparent border rounded-md px-4 py-2" name="phone" placeholder="Telefono"/>
+    <textarea class="form-input bg-transparent border rounded-md px-4 py-2" name="description" placeholder="¿Como podemos ayudarte?"/>
+    <input class="submit-btn rounded-md px-4 py-2 w-full cursor-pointer" type="submit" />
   </form>
   <p class="font-roboto text-lg text-center md:text-left">También puedes escribirnos a [correo] o llamarnos al [teléfono].</p>
 </div>
+
+<style>
+  /* Theme variable connections */
+  .contact-form {
+    border-color: var(--border-color);
+    transition: border-color 0.3s ease;
+  }
+
+  .form-input {
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  .form-input::placeholder {
+    color: var(--placeholder-color);
+  }
+
+  .submit-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark theme */
+  :global(html.dark) {
+    --border-color: #fff;
+    --text-color: #fff;
+    --placeholder-color: rgba(255, 255, 255, 0.7);
+    --button-bg: #fff;
+    --button-text: #000;
+  }
+
+  /* Light theme */
+  :global(html.light) {
+    --border-color: #000;
+    --text-color: #000;
+    --placeholder-color: rgba(0, 0, 0, 0.7);
+    --button-bg: #000;
+    --button-text: #fff;
+  }
+
+  /* Additional hover states for better UX */
+  .submit-btn:hover {
+    opacity: 0.9;
+  }
+
+  .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--border-color);
+  }
+</style>

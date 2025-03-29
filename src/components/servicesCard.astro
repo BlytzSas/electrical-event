@@ -6,14 +6,14 @@ const { title, description } = Astro.props
 
 <div class="flip-card w-52 h-72">
     <div class="flip-card-inner">
-        <div class="flip-card-front border border-white rounded-lg shadow-md p-4 flex items-center justify-center">
-            <h4 class="text-white text-5xl">
+        <div class="flip-card-front border rounded-lg shadow-md p-4 flex items-center justify-center">
+            <h4 class="text-5xl">
                 {getTwoLettersFromStr(title)}
             </h4>
         </div>
-        <div class="flip-card-back border border-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
-            <h4 class="italic font-slab text-white text-center mb-4">{title}</h4>
-            <p class="font-roboto text-white text-center">{description}</p>
+        <div class="flip-card-back border rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+            <h4 class="italic font-slab mb-4">{title}</h4>
+            <p class="font-roboto">{description}</p>
         </div>
     </div>
 </div>
@@ -44,14 +44,26 @@ const { title, description } = Astro.props
         height: 100%;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-    }
-
-    .flip-card-front {
         background-color: transparent;
+        border-color: var(--border-color);
+        color: var(--text-color);
+        transition: color 0.3s, border-color 0.3s;
     }
 
     .flip-card-back {
-        background-color: transparent;
         transform: rotateY(180deg);
+    }
+
+    /* Apply theme CSS variables */
+    :global(html.dark) .flip-card-front,
+    :global(html.dark) .flip-card-back {
+        --text-color: #FFF;
+        --border-color: #FFF;
+    }
+
+    :global(html.light) .flip-card-front,
+    :global(html.light) .flip-card-back {
+        --text-color: #000;
+        --border-color: #000;
     }
 </style>
