@@ -8,45 +8,53 @@ type TService = {
 
 const services: TService[] = [
 	{
+abbreviation: "So",
 		title: "Desarrollo de Software Personalizado",
 		description:
 			"Diseñamos e implementamos sistemas que responden a las necesidades específicas del sector público y privado.",
 	},
 	{
+abbreviation: "Au",
 		title: "Automatización de Procesos",
 		description:
 			"Optimizamos operaciones y mejoramos la productividad mediante herramientas tecnológicas avanzadas.",
 	},
 	{
+abbreviation: "We",
 		title: "Desarrollo Web",
 		description:
 			"Creamos portales accesibles y seguros que facilitan la interacción con los ciudadanos y empresas.",
 	},
 	{
+abbreviation: "Cl",
 		title: "Integración en la Nube",
 		description:
 			"Modernizamos aplicaciones mediante soluciones en la nube que garantizan escalabilidad y rendimiento.",
 	},
 	{
+abbreviation: "So",
 		title: "Soporte y Mantenimiento",
 		description:
 			"Aseguramos que tus sistemas permanezcan seguros, actualizados y funcionales en todo momento.",
 	},
 	{
+abbreviation: "Co",
 		title: "Consultoría en Tecnología",
 		description:
 			"Brindamos asesoramiento especializado para optimizar tus procesos y aprovechar al máximo las tecnologías disponibles.",
 	},
 	{
+abbreviation: "Mo",
 		title: "Desarrollo de Aplicaciones Móviles",
 		description:
 			"Creación de aplicaciones móviles para iOS y Android que ofrecen una experiencia de usuario excepcional.",
 	},
 	{
-      title: "Desarrollo de e-commerce",
+abbreviation: "eC",
+      title: "e-commerce",
       description:
         "Creamos tiendas virtuales que ofrecen una experiencia de compra segura y atractiva.",
-    },
+  },
 ];
 ---
 
@@ -63,6 +71,7 @@ const services: TService[] = [
                 <ServicesCard
                     title={service.title}
                     description={service.description}
+          abbreviation={service.abbreviation}
                 />
             </li>
         ))

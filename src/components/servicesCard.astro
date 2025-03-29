@@ -1,14 +1,14 @@
 ---
 import { getTwoLettersFromStr } from "../../utils"
 
-const { title, description } = Astro.props
+const { title, description, abbreviation } = Astro.props
 ---
 
 <div class="flip-card w-52 h-72">
     <div class="flip-card-inner">
         <div class="flip-card-front border border-white rounded-lg shadow-md p-4 flex items-center justify-center">
             <h4 class="text-white text-5xl">
-                {getTwoLettersFromStr(title)}
+        {abbreviation}
             </h4>
         </div>
         <div class="flip-card-back border border-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
