@@ -1,4 +1,6 @@
 ---
+import ToggleThemeButton from "./toggleThemeButton.astro";
+
 type TSection = {
 	title: string;
 	section: string;
@@ -29,19 +31,20 @@ const sections: TSection[] = [
 ---
 
 
-<header class="hidden items-center justify-center bg-black fixed w-full md:w-14 h-screen right-0 top-0 md:flex md:border-l z-50">
-  <button 
-    id="closeMenu" 
-    class="absolute top-[-8px] right-5 p-2 text-white  rounded md:hidden z-50"
+<header class="hidden items-center justify-center bg-(--color-background) fixed w-full md:w-14 h-screen right-0 top-0 md:flex flex-col md:border-l border z-50 transition-colors duration-300">
+  <button
+    id="closeMenu"
+    class="absolute top-[-8px] right-5 p-2 text-(--color-primary)  rounded-sm md:hidden z-50"
     type="button"
   >
     <span class="button-icon"></span>
   </button>
-  <nav class="w-full">
+  <ToggleThemeButton />
+  <nav class=" w-full">
     <ul class="flex flex-col items-center justify-between h-2/3 pt-16 md:pt-0">
       {sections.map((section: TSection) => (
         <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
-          <a href={section.section} class="nav-link font-slab vertical-txt">{section.title}</a> 
+          <a href={section.section} class="nav-link font-slab vertical-txt hover:text-gray-300 dark:hover:text-gray-300">{section.title}</a>
         </li>
       ))}
     </ul>
@@ -60,7 +63,6 @@ const sections: TSection[] = [
   	&:after {
   		content: "\d7";
   		font-size: 50px;
-  		color: #fff;
   		text-align: center;
   	}
   }
@@ -75,9 +77,8 @@ const sections: TSection[] = [
   const header = document.querySelector("header");
   const navLinks = document.querySelectorAll(".nav-link");
 
-  const closeMenu = () => {
+  function closeMenu() {
   	if (window.innerWidth < 768) {
-  		// Only close on mobile
   		header?.classList.remove("flex");
   		header?.classList.add("hidden");
   	}
@@ -85,7 +86,6 @@ const sections: TSection[] = [
 
   closeBtn?.addEventListener("click", closeMenu);
 
-  // Add click handlers to all navigation links
   navLinks.forEach((link) => {
   	link.addEventListener("click", closeMenu);
   });
