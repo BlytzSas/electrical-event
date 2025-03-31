@@ -31,10 +31,10 @@ const sections: TSection[] = [
 ---
 
 
-<header class="hidden items-center justify-center fixed w-full md:w-14 h-screen right-0 top-0 md:flex flex-col md:border-l border z-50 transition-colors duration-300">
+<header class="hidden items-center justify-center bg-(--color-background) fixed w-full md:w-14 h-screen right-0 top-0 md:flex flex-col md:border-l border z-50 transition-colors duration-300">
   <button
     id="closeMenu"
-    class="absolute top-[-8px] right-5 p-2 text-white  rounded-sm md:hidden z-50"
+    class="absolute top-[-8px] right-5 p-2 text-(--color-primary)  rounded-sm md:hidden z-50"
     type="button"
   >
     <span class="button-icon"></span>
@@ -63,7 +63,6 @@ const sections: TSection[] = [
   	&:after {
   		content: "\d7";
   		font-size: 50px;
-  		color: #fff;
   		text-align: center;
   	}
   }

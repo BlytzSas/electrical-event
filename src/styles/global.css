@@ -10,17 +10,19 @@
 
 :root {
     scroll-behavior: smooth;
-    --color-primary: #000;
-    --color-background: #FFF;
-    --color-neutral: #000;
+    --white: #FFF;
+    --black: #000;
+
+    --color-primary: var(--black);
+    --color-background: var(--white);
+    --color-neutral: var(--black);
 }
 
 :root.dark {
-    --color-primary: #FFF;
-    --color-background: #000;
-    --color-neutral: #FFF;
+    --color-primary: var(--white);
+    --color-background: var(--black);
+    --color-neutral: var(--white);
 }
-
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -54,7 +56,7 @@
     }
 
     body {
-        color: var(--color-neutral);
+        color: var(--color-primary);
         background-color: var(--color-background);
     }
 }

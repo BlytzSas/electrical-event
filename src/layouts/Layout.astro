@@ -40,13 +40,13 @@ import "../styles/global.css";
 	</head>
 	<body class="flex flex-col md:flex-row relative">
 		<div class="flex md:hidden fixed top-4 right-4 z-40">
-			<button id="openMenu" class="p-2 rounded-sm">
-        <div class="hamburguer">
-          <span class="line-1"></span>
-          <span class="line-2"></span>
-          <span class="line-3"></span>
-        </div>
-      </button>
+       	    <button id="openMenu" class="p-2 rounded-sm">
+                <div class="hamburguer">
+                <span class="line-1 bg-(--color-primary)"></span>
+                <span class="line-2 bg-(--color-primary)"></span>
+                <span class="line-3 bg-(--color-primary)"></span>
+                </div>
+            </button>
 		</div>
 		<main class="w-full h-screen pr-0 md:pr-10">
 			<slot />
@@ -71,7 +71,6 @@ import "../styles/global.css";
     .line-1, .line-2, .line-3 {
         width: 35px;
         height: 3px;
-        background-color: white;
         margin: 4px 0;
     }
 
