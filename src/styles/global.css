@@ -1,0 +1,55 @@
+/* The integration's default injected base.css file */
+@import 'tailwindcss';
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@theme {
+    --font-slab: Roboto Slab, serif;
+    --font-roboto: Roboto, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        color-scheme: light dark;
+    }
+
+    html.dark {
+        color-scheme: dark;
+        --bg-color: #000;
+        --text-color: #FFF;
+    }
+
+    html.light {
+        color-scheme: light;
+        --bg-color: #FFF;
+        --text-color: #000;
+    }
+
+}

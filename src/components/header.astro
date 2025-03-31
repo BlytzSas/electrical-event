@@ -29,15 +29,15 @@ const sections: TSection[] = [
 ---
 
 
-<header class="hidden items-center justify-center bg-black dark:bg-black bg-white fixed w-full md:w-14 h-screen right-0 top-0 md:flex flex-col md:border-l z-50 text-white dark:text-white text-black transition-colors duration-300">
+<header class="hidden items-center justify-center fixed w-full md:w-14 h-screen right-0 top-0 md:flex flex-col md:border-l z-50 transition-colors duration-300">
   <button
     id="closeMenu"
-    class="absolute top-[-8px] right-5 p-2 text-white  rounded md:hidden z-50"
+    class="absolute top-[-8px] right-5 p-2 text-white  rounded-sm md:hidden z-50"
     type="button"
   >
     <span class="button-icon"></span>
   </button>
-  <button id="themeToggle" class="p-2 rounded">
+  <button id="themeToggle" class="p-2 rounded-sm">
 		<svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden">
     		<circle cx="12" cy="12" r="5"></circle>
     		<line x1="12" y1="1" x2="12" y2="3"></line>
@@ -57,7 +57,7 @@ const sections: TSection[] = [
     <ul class="flex flex-col items-center justify-between h-2/3 pt-16 md:pt-0">
       {sections.map((section: TSection) => (
         <li class="flex items-center justify-center px-8 py-4 cursor-pointer">
-          <a href={section.section} class="nav-link font-slab vertical-txt text-white hover:text-gray-300 dark:hover:text-gray-300">{section.title}</a>
+          <a href={section.section} class="nav-link font-slab vertical-txt hover:text-gray-300 dark:hover:text-gray-300">{section.title}</a>
         </li>
       ))}
     </ul>

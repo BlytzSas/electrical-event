@@ -6,14 +6,14 @@ const { title, description } = Astro.props
 
 <div class="flip-card w-52 h-72">
     <div class="flip-card-inner">
-        <div class="flip-card-front border border-white rounded-lg shadow-md p-4 flex items-center justify-center">
-            <h4 class="text-white text-5xl">
+        <div class="flip-card-front border border-black rounded-lg shadow-md p-4 flex items-center justify-center">
+            <h4 class="text-5xl">
                 {getTwoLettersFromStr(title)}
             </h4>
         </div>
         <div class="flip-card-back border border-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
-            <h4 class="italic font-slab text-white text-center mb-4">{title}</h4>
-            <p class="font-roboto text-white text-center">{description}</p>
+            <h4 class="italic font-slab text-center mb-4">{title}</h4>
+            <p class="font-roboto text-center">{description}</p>
         </div>
     </div>
 </div>
