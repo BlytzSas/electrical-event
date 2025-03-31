@@ -94,14 +94,6 @@ import Header from "../components/header.astro";
 		const sunIcon = document.getElementById('sun-icon');
 		const moonIcon = document.getElementById('moon-icon');
 
-		// Function to update icon visibility
-		function updateIcon() {
-			const isDark = document.documentElement.classList.contains('dark');
-			sunIcon?.classList.toggle('hidden', isDark);
-			moonIcon?.classList.toggle('hidden', !isDark);
-		};
-
-		// Initial theme setup from local storage or user preference
 		const theme = (() => {
 			if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
 				return localStorage.getItem('theme');
@@ -109,13 +101,16 @@ import Header from "../components/header.astro";
 			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 		})();
 
-		// Set initial theme
 		document.documentElement.classList.add(theme as unknown as string);
 
-		// Initial icon setup
+		function updateIcon() {
+			const isDark = document.documentElement.classList.contains('dark');
+			sunIcon?.classList.toggle('hidden', isDark);
+			moonIcon?.classList.toggle('hidden', !isDark);
+		};
+
 		updateIcon();
 
-		// Theme toggle functionality
 		themeToggle?.addEventListener('click', () => {
 			const isDark = document.documentElement.classList.toggle('dark');
 			const theme = isDark ? 'dark' : 'light';
@@ -123,7 +118,6 @@ import Header from "../components/header.astro";
 			updateIcon();
 		});
 
-		// Menu toggle
 		openMenuBtn?.addEventListener('click', () => {
 			header?.classList.remove('hidden');
 			header?.classList.add('flex');
