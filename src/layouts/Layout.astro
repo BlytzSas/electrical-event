@@ -17,6 +17,26 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Blytz | Tu aliado teconologico</title>
 		<meta name="description" content="Blytz es tu aliado tecnológico en la nube, brindando soluciones innovadoras para empresas y organizaciones que buscan optimizar sus procesos y mejorar su productividad.">
+        <script is:inline>
+          // Necessary for view transitions
+          document.addEventListener('astro:after-swap', () => {
+            if (
+              localStorage.theme === 'dark' ||
+              (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
+              document.documentElement.classList.add('dark');
+            }
+          });
+
+          if (
+            localStorage.theme === 'dark' ||
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+      </script>
 	</head>
 	<body class="flex flex-col md:flex-row relative">
 		<div class="flex md:hidden fixed top-4 right-4 z-40">
@@ -67,33 +87,6 @@ import "../styles/global.css";
 	document.addEventListener('DOMContentLoaded', () => {
 		const openMenuBtn = document.getElementById('openMenu');
 		const header = document.querySelector('header');
-		const themeToggle = document.getElementById('themeToggle');
-		const sunIcon = document.getElementById('sun-icon');
-		const moonIcon = document.getElementById('moon-icon');
-
-		const theme = (() => {
-			if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-				return localStorage.getItem('theme');
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-		})();
-
-		document.documentElement.classList.add(theme as unknown as string);
-
-		function updateIcon() {
-			const isDark = document.documentElement.classList.contains('dark');
-			sunIcon?.classList.toggle('hidden', isDark);
-			moonIcon?.classList.toggle('hidden', !isDark);
-		};
-
-		updateIcon();
-
-		themeToggle?.addEventListener('click', () => {
-			const isDark = document.documentElement.classList.toggle('dark');
-			const theme = isDark ? 'dark' : 'light';
-			localStorage.setItem('theme', theme);
-			updateIcon();
-		});
 
 		openMenuBtn?.addEventListener('click', () => {
 			header?.classList.remove('hidden');

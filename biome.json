@@ -13,7 +13,7 @@
     "enabled": true,
     "indentStyle": "tab",
     "formatWithErrors": true,
-    "indentSize": 2,
+    "indentWidth": 4,
     "lineWidth": 80
   },
   "organizeImports": {
@@ -32,7 +32,9 @@
   },
   "overrides": [
     {
-      "include": ["*.astro"],
+      "include": [
+        "*.astro"
+      ],
       "linter": {
         "rules": {
           "style": {
