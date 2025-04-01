@@ -83,7 +83,9 @@ import "../styles/global.css";
 </style>
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
+    localStorage.setItem('theme', 'light');
+
+    document.addEventListener('DOMContentLoaded', () => {
 		const openMenuBtn = document.getElementById('openMenu');
 		const header = document.querySelector('header');
 
