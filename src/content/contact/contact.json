@@ -1,0 +1,44 @@
+{
+  "title": "¡Trabajemos Juntos!",
+  "description": "¿Tienes un proyecto en mente o necesitas modernizar procesos? Estamos listos para ayudarte.",
+  "subtitle": "  También puedes escribirnos a",
+  "form": {
+    "fields": [
+      {
+        "type": "text",
+        "placeholder": "Nombre",
+        "name": "name",
+        "required": true
+      },
+      {
+        "type": "email",
+        "placeholder": "Correo Electrónico",
+        "name": "email",
+        "required": true
+      },
+      {
+        "type": "text",
+        "placeholder": "Teléfono",
+        "name": "phone",
+        "required": true
+      },
+      {
+        "type": "textarea",
+        "placeholder": "¿Como podemos ayudarte?",
+        "name": "description",
+        "required": true
+      },
+      {
+        "name": "submit",
+        "type": "submit",
+        "placeholder": "Enviar",
+        "required": false
+      }
+    ],
+    "anchor": {
+      "text": "[ blytzsas@gmail.com ]",
+      "action": "/contact",
+      "href": "mailto:blytzsas@gmail.com"
+    }
+  }
+}

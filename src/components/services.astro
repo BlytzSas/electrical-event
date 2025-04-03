@@ -1,62 +1,9 @@
 ---
 import ServicesCard from "./servicesCard.astro";
+import { getCollection } from 'astro:content';
 
-type TService = {
-	title: string;
-	description: string;
-	abbreviation: string;
-};
-
-const services: TService[] = [
-	{
-		abbreviation: "So",
-		title: "Desarrollo de Software Personalizado",
-		description:
-			"Diseñamos e implementamos sistemas que responden a las necesidades específicas del sector público y privado.",
-	},
-	{
-		abbreviation: "Au",
-		title: "Automatización de Procesos",
-		description:
-			"Optimizamos operaciones y mejoramos la productividad mediante herramientas tecnológicas avanzadas.",
-	},
-	{
-		abbreviation: "We",
-		title: "Desarrollo Web",
-		description:
-			"Creamos portales accesibles y seguros que facilitan la interacción con los ciudadanos y empresas.",
-	},
-	{
-		abbreviation: "Cl",
-		title: "Integración en la Nube",
-		description:
-			"Modernizamos aplicaciones mediante soluciones en la nube que garantizan escalabilidad y rendimiento.",
-	},
-	{
-		abbreviation: "So",
-		title: "Soporte y Mantenimiento",
-		description:
-			"Aseguramos que tus sistemas permanezcan seguros, actualizados y funcionales en todo momento.",
-	},
-	{
-		abbreviation: "Co",
-		title: "Consultoría en Tecnología",
-		description:
-			"Brindamos asesoramiento especializado para optimizar tus procesos y aprovechar al máximo las tecnologías disponibles.",
-	},
-	{
-		abbreviation: "Mo",
-		title: "Desarrollo de Aplicaciones Móviles",
-		description:
-			"Creación de aplicaciones móviles para iOS y Android que ofrecen una experiencia de usuario excepcional.",
-	},
-	{
-		abbreviation: "eC",
-        title: "e-commerce",
-        description:
-            "Creamos tiendas virtuales que ofrecen una experiencia de compra segura y atractiva.",
-  },
-];
+const servicesCollection = await getCollection('services');
+const { data } = servicesCollection[0]
 ---
 
 <div
@@ -64,15 +11,17 @@ const services: TService[] = [
   class="about-us flex flex-col items-center justify-center w-full p-8"
 >
   <div class="flex flex-col items-center justify-center gap-16">
-    <h2 class="font-slab text-5xl text-center">Soluciones tecnológicas a la medida</h2>
+    <h2 class="font-slab text-5xl text-center">
+      Soluciones tecnológicas a la medida
+    </h2>
     <ul class="flex flex-row flex-wrap items-center justify-center gap-10">
       {
-        services.map((service: TService) => (
+        data.map((service) => (
             <li>
                 <ServicesCard
                     title={service.title}
                     description={service.description}
-          abbreviation={service.abbreviation}
+                    abbreviation={service.abbreviation}
                 />
             </li>
         ))
