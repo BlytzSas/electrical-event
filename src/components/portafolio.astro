@@ -1,10 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+
+const portafolioCollection = await getCollection('portafolio');
+const { data: { title, description, clients }} = portafolioCollection[0];
+---
 <div id="portafolio" class="about-us flex flex-col items-center justify-center w-full h-screen p-8 gap-8">
-  <h2 class="font-slab text-5xl text-center">Proyectos que Marcan la Diferencia</h2>
-  <h3 class="font-roboto text-center text-xl">Descubre algunos de nuestros proyectos exitosos, diseñados para impulsar la transformación digital del país.</h3>
+  <h2 class="font-slab text-5xl text-center">
+    {title}
+  </h2>
+  <h3 class="font-roboto text-center text-xl">{description}</h3>
 
   <ul>
-    <li>
-        <a href="https://ressonarfilms.com/" target="_blank" class="text-rose-700 text-2xl underline underline-offset-4">Ressonar films</a>
-    </li>
+    {clients.map(client => (
+      <li>
+          <a href={client.url} target="_blank" class="text-rose-700 text-2xl underline underline-offset-4">{client.name}</a>
+      </li>
+    ))}
   </ul>
 </div>

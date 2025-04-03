@@ -1,14 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+const homeCollection = await getCollection('home');
+const { data: { title, subtitle, description, contact }} = homeCollection[0]
+---
+
 <div id="home" class="about-us flex flex-col items-center justify-evenly w-full h-screen p-8 md:justify-center gap-8">
   <h1 class="font-slab text-8xl pb-8">
-    Blytz
+    {title}
   </h1>
   <h2 class="font-roboto text-2xl text-center md:text-left">
-    Transformamos Retos en Soluciones Digitales Innovadoras
+    {subtitle}
   </h2>
   <h3 class="font-roboto text-xl pt-2 text-center md:text-left">
-    Desarrollamos software a la medida para modernizar procesos y potenciar resultados.
+    {description}
   </h3>
   <a href="#contact" class="pt-8 text-xl">
-    ¡Hablemos Hoy! – <span class="text-sky-600">[ Contáctanos ]</span>
+   {contact.text}
+   <span class="text-sky-600">{contact.anchor.text}</span>
   </a>
 </div>
