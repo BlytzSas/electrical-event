@@ -3,8 +3,6 @@ import { getCollection } from "astro:content";
 
 const contactCollection = await getCollection("contact");
 const { data: { title, description, subtitle, form: { fields, anchor} }} =  contactCollection[0];
-
-console.log('data', title)
 ---
 
 <div id="contact" class="about-us flex flex-col items-center justify-center w-full h-screen p-8 gap-8">
@@ -14,11 +12,11 @@ console.log('data', title)
   <h3 class="font-roboto text-lg text-center md:text-left">
     {description}
   </h3>
-  <form class="p-6 flex flex-col items-center justify-between border rounded-md border-(--color-primary) gap-8">
+  <form class="p-6 flex flex-col items-center justify-between border rounded-md border-(--color-primary) gap-8 w-full md:w-md">
     <input class="border border-(--color-primary) placeholder:text-gray-500 rounded-md px-4 py-2 w-full" name={fields[0].name} placeholder={fields[0].placeholder} />
     <input class="border border-(--color-primary) placeholder:text-gray-500 rounded-md px-4 py-2 w-full" name={fields[1].name} placeholder={fields[1].placeholder} />
     <input class="border border-(--color-primary) placeholder:text-gray-500 rounded-md px-4 py-2 w-full" name={fields[2].name} placeholder={fields[2].placeholder} />
-    <textarea class="border border-(--color-primary) placeholder:text-gray-500 rounded-md px-4 py-2" name={fields[3].name} placeholder={fields[3].placeholder}></textarea>
+    <textarea class="border border-(--color-primary) placeholder:text-gray-500 rounded-md px-4 py-2 w-full" name={fields[3].name} placeholder={fields[3].placeholder}></textarea>
     <input class="bg-(--color-primary) rounded-md text-(--color-background) px-4 py-2 w-full cursor-pointer" type="submit" value={fields[4].placeholder} />
   </form>
   <p class="font-roboto text-lg text-center md:text-left">
