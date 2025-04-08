@@ -25,7 +25,8 @@
       {
         "type": "textarea",
         "placeholder": "¿Como podemos ayudarte?",
-        "name": "description",
+        "name": "message",
+        "message": "description",
         "required": true
       },
       {
