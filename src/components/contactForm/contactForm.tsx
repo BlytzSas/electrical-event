@@ -29,6 +29,8 @@ export function ContactForm({ formFields }: { formFields: FormField[] }) {
           },
           body: JSON.stringify(value),
         });
+
+        console.log("Response:", response);
         const data = await response.json();
 
         if (data.success) {
