@@ -4,27 +4,30 @@ import { ContactForm } from "../components/contactForm/contactForm";
 
 const contactCollection = await getCollection("contact");
 const {
-	data: {
-		title,
-		description,
-		subtitle,
-		form: { fields, anchor },
-	},
+  data: {
+    title,
+    description,
+    subtitle,
+    form: { fields, anchor },
+  },
 } = contactCollection[0];
 ---
 
-<div id="contact" class="about-us flex flex-col items-center justify-center w-full h-screen p-8 gap-8">
+<div
+  id="contact"
+  class="about-us flex flex-col items-center justify-center w-full h-screen p-8 gap-8"
+>
   <h2 class="font-slab text-5xl text-center md:text-left">
     {title}
   </h2>
   <h3 class="font-roboto text-lg text-center md:text-left">
     {description}
   </h3>
-  <ContactForm client:visible formFields={fields} />
+  <ContactForm formFields={fields} client:load />
   <p class="font-roboto text-lg text-center md:text-left">
     {subtitle}
     <a href="mailto:blytzsas@gmail.com" class="text-sky-600">
-        {anchor.text}
+      {anchor.text}
     </a>.
   </p>
 </div>
